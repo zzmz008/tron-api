@@ -1,0 +1,94 @@
+# Changelog
+
+All notable changes to TronAPI are documented in this file.
+
+## [6.0.3] - 2026-08-08
+
+### Changed
+
+- Published the audited PHP 8.4 production build under a new immutable stable
+  source reference.
+
+## [6.0.2] - 2026-08-08
+
+### Added
+
+- Dedicated examples for retrieving account transactions and receipts, sending
+  verified TRX and TRC-20 transactions, and querying individual token standards.
+- Self-hosted java-tron monitor routes and the `/net/listnodes` compatibility
+  route in the provider-neutral endpoint catalog.
+- Structured JSON-RPC exceptions, node-owned account discovery, typed eth_call
+  block references, and hash-selected block receipt queries.
+- Every current TronGrid v1 reference path in the low-level endpoint catalog.
+
+### Fixed
+
+- Corrected the public `Amount` method names used by the README quick-start code.
+- Canonicalized Solidity ABI aliases before selector hashing, rejected invalid
+  fixed-point type spellings, and retained hashes for all complex indexed event
+  values.
+- Bounded recursive ABI sizes, aggregate traversal work, and offsets; required
+  dynamic-byte padding; and matched deployment verification to the
+  tuple-component limits of TRON's ABI protobuf.
+- Aligned JSON-RPC block tags and latest-state reads with current java-tron
+  behavior, and pinned CI actions to immutable revisions.
+- Kept custom JSON-RPC requests on the exact configured self-hosted endpoint,
+  aligned native read routes with documented GET semantics, and narrowed
+  stateful filters to their supported selectors. The legacy `pending` enum case
+  remains source-compatible but is rejected before transport.
+- Disabled implicit JSON-RPC retries so stateful filter creation and change
+  polling cannot be duplicated or consumed after an ambiguous response.
+
+## [6.0.1] - 2026-08-08
+
+### Changed
+
+- Finalized the 6.0 release metadata and changelog comparison reference.
+
+## [6.0.0] - 2026-08-08
+
+### Added
+
+- PHP 8.4 strict typed architecture with domain services and immutable values.
+- Guzzle 7/8 transport, explicit FullNode/SolidityNode/indexer/JSON-RPC
+  topology, role-specific credentials, streamed response limits, bounded retry
+  behavior, timeouts, and typed HTTP/node errors.
+- Exact TRX and native-asset values without floating-point conversion.
+- Complete current native route catalog with latest/confirmed role metadata.
+- Verified transaction intents, local secp256k1 signing, immutable multisignature,
+  permission bitmaps, protobuf wire verification, Bandwidth estimation,
+  broadcast, and receipt workflows.
+- Recursive Solidity ABI encoding/decoding, deployment, calls, Energy estimation,
+  calldata/revert/error/event decoding, and TRC-20/721/1155 wrappers.
+- Complete Stake 2.0 service plus isolated legacy staking compatibility.
+- Account, block, TRC-10, witness, governance, exchange, market, network, and
+  JSON-RPC services.
+- Provider-neutral indexed history/event/token interfaces with a replaceable
+  TronGrid v1 adapter.
+- BIP-39 recovery phrases, BIP-32 xprv/xpub, TRON BIP-44 derivation, watch-only
+  addresses, and TronWeb-compatible Message Signature V2.
+- Numbered examples, migration/security/provider/API documentation, PHPStan
+  maximum-level analysis, PHPUnit 13 tests, and GitHub Actions CI.
+
+### Changed
+
+- Rebuilt the complete `src` tree and public API for TronAPI 6.0.
+- TronGrid is now only a default public host/indexer adapter; native services are
+  vendor-independent.
+- Private keys are passed only through signer boundaries and are never stored on
+  the facade or HTTP client.
+- Broadcast requests are never retried automatically after an ambiguous
+  transport failure.
+
+### Removed
+
+- PHP 7.x/8.0-8.3 compatibility and obsolete dependency constraints.
+- Mutable address/private-key facade state and node-side key generation.
+- Legacy provider, manager, transaction builder, duplicate cryptographic helper,
+  Tronscan/universal trait, bundled ABI JSON, Travis CI, and Jekyll artifacts.
+- All 5.x compatibility aliases.
+
+[6.0.3]: https://github.com/iexbase/tron-api/compare/v6.0.2...v6.0.3
+[6.0.2]: https://github.com/iexbase/tron-api/compare/v6.0.1...v6.0.2
+[6.0.1]: https://github.com/iexbase/tron-api/compare/v6.0.0...v6.0.1
+[6.0.0]: https://github.com/iexbase/tron-api/compare/v5.0.0...v6.0.0
